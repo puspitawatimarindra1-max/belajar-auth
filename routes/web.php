@@ -22,8 +22,16 @@ Route::get('/tentang', function () {
 Route::get('/berita/{slug}', [ArticleController::class, 'show'])->name('berita.show');
 
 // Autentikasi bawaan Laravel UI
-// Auth::routes();
+Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Shortcut untuk logout (POST preferred by Laravel UI)
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', function() {
+    Auth::logout();
+    return redirect('/login');
+});
 
 // Rute Group untuk Admin (Hanya boleh diakses oleh user yang sudah Login)
 Route::middleware(['auth'])->group(function () {
@@ -47,14 +55,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/admin/articles', ArticleController::class);
     Route::resource('/admin/tags', TagController::class);
 
-});
-
-Auth::routes();
-
-// Shortcut untuk logout (POST preferred by Laravel UI)
-Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-Route::get('/logout', function() {
-    Auth::logout();
-    return redirect('/login');
 });
 
