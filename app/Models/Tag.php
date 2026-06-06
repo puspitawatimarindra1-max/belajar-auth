@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Tag extends Model
 {
     protected $fillable = ['name', 'slug'];
 
-    // Relasi One-to-Many ke model Article
+    /**
+     * Relasi Many-to-Many ke model Article
+     */
     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->belongsToMany(Article::class);
     }
 }

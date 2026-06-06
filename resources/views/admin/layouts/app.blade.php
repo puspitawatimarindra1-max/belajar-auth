@@ -51,10 +51,17 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
+           <!-- Heading -->
             <div class="sidebar-heading">
                 Kelola Konten
             </div>
+
+            <li class="nav-item">
+                 <a class="nav-link" href="{{ route('users.index') }}">
+                        <i class="fas fa-users"></i>
+                        <span>Pengguna</span>
+                </a>
+            </li>
 
             <!-- Nav Item: Berita -->
             <li class="nav-item">
@@ -67,17 +74,37 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu Berita:</h6>
-                        <a class="collapse-item" href="#">Semua Berita</a>
-                        <a class="collapse-item" href="#">Tambah Berita</a>
+                        <a class="collapse-item" href="{{ route('articles.index') }}">
+                            Semua Berita
+                        </a>
+                        <a class="collapse-item" href="{{ route('articles.create') }}">
+                            Tambah Berita
+                        </a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item: Kategori -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-tags"></i>
+                <a class="nav-link" href="{{ route('categories.index') }}">
+                    <i class="fas fa-fw fa-folder"></i>
                     <span>Kategori</span>
+                </a>
+            </li>
+
+            <!-- Nav Item: Tag -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('tags.index') }}">
+                    <i class="fas fa-fw fa-tags"></i>
+                    <span>Tag</span>
+                </a>
+            </li>
+
+            <!-- Nav Item: Profil -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('profile.edit') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Profil Saya</span>
                 </a>
             </li>
 
@@ -124,7 +151,7 @@
                             <!-- Dropdown: User -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profil
                                 </a>
